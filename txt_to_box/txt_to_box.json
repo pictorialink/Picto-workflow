@@ -1,0 +1,31 @@
+{
+  "5": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "提示词模板：",
+      "prompt": "a dog,man,sky",
+      "model": "Qwen2.5-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": false,
+      "temperature": 0.7000000000000001,
+      "max_new_tokens": 512,
+      "seed": 656
+    },
+    "class_type": "Qwen2.5",
+    "_meta": {
+      "title": "Qwen2.5"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  }
+}

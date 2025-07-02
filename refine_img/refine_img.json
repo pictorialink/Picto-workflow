@@ -1,0 +1,224 @@
+{
+  "3": {
+    "inputs": {
+      "noise": [
+        "7",
+        0
+      ],
+      "guider": [
+        "8",
+        0
+      ],
+      "sampler": [
+        "4",
+        0
+      ],
+      "sigmas": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "12",
+        2
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "4": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "6": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "基本调度器"
+    }
+  },
+  "7": {
+    "inputs": {
+      "noise_seed": 137572252904337
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "8": {
+    "inputs": {
+      "cfg_conds": 3,
+      "cfg_cond2_negative": 1.5,
+      "model": [
+        "17",
+        0
+      ],
+      "cond1": [
+        "12",
+        0
+      ],
+      "cond2": [
+        "12",
+        1
+      ],
+      "negative": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "DualCFGGuider",
+    "_meta": {
+      "title": "双CFG引导器"
+    }
+  },
+  "9": {
+    "inputs": {
+      "text": [
+        "26",
+        0
+      ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "17",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "10": {
+    "inputs": {
+      "text": "NSFW, nude, naked, porn, (worst quality, low quality:1.4), deformed iris, deformed pupils,\n(deformed, distorted, disfigured: 1.3), cropped,out of frame, poorly drawn, bad anatomy,\nwrong anatomy, extra limb, missing limb,floating limbs, cloned face, (mutated hands\nand fingers: 1.4), disconnected limbs, extra legs, fused fingers, too many fingers, long\nneck, mutation, mutated, ugly, disgusting,amputation, blurry",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "17",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "12": {
+    "inputs": {
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "10",
+        0
+      ],
+      "vae": [
+        "17",
+        2
+      ],
+      "pixels": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "InstructPixToPixConditioning",
+    "_meta": {
+      "title": "InstructPixToPix条件"
+    }
+  },
+  "13": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "17",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "17": {
+    "inputs": {
+      "ckpt_name": "cosxl_edit.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "22": {
+    "inputs": {
+      "image": "base64（无前缀）"
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
+    }
+  },
+  "23": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "26": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
+      "prompt": "蓝天",
+      "model": "Qwen2.5-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": true,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      "seed": 1061,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "Qwen2.5",
+    "_meta": {
+      "title": "Qwen2.5"
+    }
+  }
+}

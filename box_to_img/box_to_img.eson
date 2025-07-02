@@ -1,0 +1,296 @@
+{
+  "11": {
+    "inputs": {
+      "ckpt_name": "turbovisionxlSuperFastXLBasedOnNew_tvxlV32Bakedvae.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "12": {
+    "inputs": {
+      "text": [
+        "83",
+        0
+      ],
+      "clip": [
+        "71",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "14": {
+    "inputs": {
+      "add_noise": true,
+      @random_seed(1000000, 999999999)
+      "noise_seed": 635335189357562,
+      @get_cfg(stat.current_style)
+      "cfg": 1.5,
+      "model": [
+        "71",
+        0
+      ],
+      "positive": [
+        "12",
+        0
+      ],
+      "negative": [
+        "18",
+        0
+      ],
+      "sampler": [
+        "15",
+        0
+      ],
+      "sigmas": [
+        "45",
+        0
+      ],
+      "latent_image": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "SamplerCustom",
+    "_meta": {
+      "title": "SamplerCustom"
+    }
+  },
+  "15": {
+    "inputs": {
+      @get_sampler_name(stat.current_style)
+      "sampler_name": "dpmpp_sde"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "16": {
+    "inputs": {
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 768,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 768,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "18": {
+    "inputs": {
+      @negative_prompt_factory(stat.current_style)
+      "text": "nsfw",
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "19": {
+    "inputs": {
+      "samples": [
+        "14",
+        1
+      ],
+      "vae": [
+        "11",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "45": {
+    "inputs": {
+      "scheduler": "normal",
+      @get_steps(stat.current_style)
+      "steps": 4,
+      @value(1)
+      "denoise": 1,
+      "model": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "66": {
+    "inputs": {
+      "texts": [
+        "81",
+        0
+      ],
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncodeList|cgem156",
+    "_meta": {
+      "title": "CLIP Text Encode List 🍌"
+    }
+  },
+  "68": {
+    "inputs": {
+      @value(stat.user_input.regional2pic.masks)
+      "masks_b64": "xxx",
+      "channel": "green"
+    },
+    "class_type": "LoadMaskListBase64|cgem156",
+    "_meta": {
+      "title": "Load Mask Base64 List 🍌"
+    }
+  },
+  "70": {
+    "inputs": {
+      "model": [
+        "11",
+        0
+      ],
+      "conds": [
+        "66",
+        0
+      ],
+      "masks": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "AttentionCoupleOne|cgem156",
+    "_meta": {
+      "title": "Attention Couple One🍌"
+    }
+  },
+  "71": {
+    "inputs": {
+      @get_lora_name(stat.current_style)
+      "lora_name": "CHL.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "70",
+        0
+      ],
+      "clip": [
+        "11",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "76": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "加载放大模型"
+    }
+  },
+  "77": {
+    "inputs": {
+      "upscale_model": [
+        "76",
+        0
+      ],
+      "image": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "使用模型放大图像"
+    }
+  },
+  "78": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      @value(stat.current_frame.standard_width)
+      "width": 2048,
+      @value(stat.current_frame.standard_height)
+      "height": 2048,
+      "crop": "disabled",
+      "image": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "图像放大"
+    }
+  },
+  @output_node
+  "80": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "78",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "81": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
+      @compose_prompt_factory(stat.user_input.regional2pic.texts, stat.current_style)
+      "prompt": "xxxxxx",
+      "model": "Qwen2.5-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": true,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      @random_seed(1, 2048)
+      "seed": 1451
+    },
+    "class_type": "Qwen2.5",
+    "_meta": {
+      "title": "Qwen2.5"
+    }
+  },
+  "83": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
+      @prompt_factory(stat.user_input.regional2pic.background, stat.current_style, stat.operationNormal, stat.rolePrompt)
+      "prompt": "xxxxxx",
+      "model": "Qwen2.5-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": true,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      @random_seed(1, 2048)
+      "seed": 1827
+    },
+    "class_type": "Qwen2.5",
+    "_meta": {
+      "title": "Qwen2.5"
+    }
+  }
+}

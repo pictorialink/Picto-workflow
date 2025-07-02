@@ -1,0 +1,304 @@
+{
+  "3": {
+    "inputs": {
+      @random_seed(1000000, 999999999)
+      "seed": 548330885826594,
+      "steps": 7,
+      "cfg": 3,
+      "sampler_name": "dpmpp_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "18",
+        0
+      ],
+      "positive": [
+        "19",
+        0
+      ],
+      "negative": [
+        "19",
+        1
+      ],
+      "latent_image": [
+        "19",
+        3
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "turbovisionxlSuperFastXLBasedOnNew_tvxlV32Bakedvae.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "17": {
+    "inputs": {
+      "head": "fooocus/fooocus_inpaint_head.pth",
+      "patch": "fooocus/inpaint_v26.fooocus.patch"
+    },
+    "class_type": "INPAINT_LoadFooocusInpaint",
+    "_meta": {
+      "title": "Load Fooocus Inpaint"
+    }
+  },
+  "18": {
+    "inputs": {
+      "model": [
+        "22",
+        0
+      ],
+      "patch": [
+        "17",
+        0
+      ],
+      "latent": [
+        "19",
+        2
+      ]
+    },
+    "class_type": "INPAINT_ApplyFooocusInpaint",
+    "_meta": {
+      "title": "Apply Fooocus Inpaint"
+    }
+  },
+  "19": {
+    "inputs": {
+      "positive": [
+        "55",
+        0
+      ],
+      "negative": [
+        "56",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ],
+      "pixels": [
+        "66",
+        0
+      ],
+      "mask": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "INPAINT_VAEEncodeInpaintConditioning",
+    "_meta": {
+      "title": "VAE Encode & Inpaint Conditioning"
+    }
+  },
+  "22": {
+    "inputs": {
+      "model": [
+        "57",
+        0
+      ]
+    },
+    "class_type": "DifferentialDiffusion",
+    "_meta": {
+      "title": "差异扩散DifferentialDiffusion"
+    }
+  },
+  "23": {
+    "inputs": {
+      "smoothness": 2,
+      "mask": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "SmoothMask",
+    "_meta": {
+      "title": "Smooth Mask ♾️Mixlab"
+    }
+  },
+  "55": {
+    "inputs": {
+      "text": [
+        "63",
+        0
+      ],
+      "clip": [
+        "57",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "56": {
+    "inputs": {
+      @negative_prompt_factory(stat.current_style)
+      "text": "nsfw,",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "57": {
+    "inputs": {
+      @get_lora_name(stat.current_style)
+      "lora_name": "CHL.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载LoRA"
+    }
+  },
+  "59": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "加载放大模型"
+    }
+  },
+  "60": {
+    "inputs": {
+      "upscale_model": [
+        "59",
+        0
+      ],
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "使用模型放大图像"
+    }
+  },
+  "61": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      @value(stat.user_input.redrawing_img.width)
+      "width": 1024,
+      @value(stat.user_input.redrawing_img.height)
+      "height": 768,
+      "crop": "disabled",
+      "image": [
+        "60",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  @output_node
+  "62": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "63": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, XDS, Thick coating style,等英文不变",
+      @prompt_factory_redrawing(stat.user_input.repaint.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
+      "prompt": "XDS, Thick coating style, little girl",
+      "model": "Qwen2.5-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": true,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      @random_seed(1, 2048)
+      "seed": 1101
+    },
+    "class_type": "Qwen2.5",
+    "_meta": {
+      "title": "Qwen2.5"
+    }
+  },
+  "66": {
+    "inputs": {
+      @value(stat.user_input.repaint.base64)
+      "image": "base64（无前缀）"
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
+    }
+  },
+  "70": {
+    "inputs": {
+      @value(stat.user_input.repaint.mask)
+      "image": "base64（无前缀）"
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
+    }
+  },
+  "72": {
+    "inputs": {
+      "channel": "L(LAB)",
+      "black_point": 0,
+      "white_point": 255,
+      "gray_point": 1,
+      "invert_output_mask": false,
+      "image": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "LayerMask: ImageToMask",
+    "_meta": {
+      "title": "图层遮罩：图像转遮罩"
+    }
+  }
+}

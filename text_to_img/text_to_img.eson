@@ -1,0 +1,201 @@
+{
+  "3": {
+    "inputs": {
+      @random_seed(1000000, 999999999)
+      "seed": 429288974237635,
+      @get_steps(stat.current_style)
+      "steps": 4,
+      @get_cfg(stat.current_style)
+      "cfg": 1.5,
+      @get_sampler_name(stat.current_style)
+      "sampler_name": "dpmpp_sde",
+      "scheduler": "normal",
+      @value(1)
+      "denoise": 1,
+      "model": [
+        "10",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "turbovisionxlSuperFastXLBasedOnNew_tvxlV32Bakedvae.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 768,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 768,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "19",
+        0
+      ],
+      "clip": [
+        "10",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      @negative_prompt_factory(stat.current_style)
+      "text": "nsfw,",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "10": {
+    "inputs": {
+      @get_lora_name(stat.current_style)
+      "lora_name": "CHL.safetensors",
+      "strength_model": 1.0000000000000002,
+      "strength_clip": 1.0000000000000002,
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "12": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "加载放大模型"
+    }
+  },
+  "13": {
+    "inputs": {
+      "upscale_model": [
+        "12",
+        0
+      ],
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "使用模型放大图像"
+    }
+  },
+  "14": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      @value(stat.current_frame.standard_width)
+      "width": 1536,
+      @value(stat.current_frame.standard_height)
+      "height": 1536,
+      "crop": "disabled",
+      "image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "图像放大"
+    }
+  },
+  @output_node
+  "16": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "19": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
+      @prompt_factory(stat.user_input.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
+      "prompt": "xxxxxx",
+      "model": "Qwen2.5-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": true,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      @random_seed(1, 2048)
+      "seed": 1995
+    },
+    "class_type": "Qwen2.5",
+    "_meta": {
+      "title": "Qwen2.5"
+    }
+  }
+}
