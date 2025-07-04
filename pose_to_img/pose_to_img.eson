@@ -151,35 +151,6 @@
       "title": "SetUnionControlNetType"
     }
   },
-  @output_node
-  "45": {
-    "inputs": {
-      "filename_prefix": "ComfyUI",
-      "images": [
-        "46",
-        0
-      ]
-    },
-    "class_type": "SaveImage",
-    "_meta": {
-      "title": "Save Image"
-    }
-  },
-  "46": {
-    "inputs": {
-      "load_local_model": false,
-      "background_color_name": "transparency",
-      "device": "auto",
-      "image": [
-        "8",
-        0
-      ]
-    },
-    "class_type": "BiRefNet_Hugo",
-    "_meta": {
-      "title": "🔥BiRefNet"
-    }
-  },
   "51": {
     "inputs": {
       @value(1024)
