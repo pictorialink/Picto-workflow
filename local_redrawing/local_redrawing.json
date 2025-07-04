@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 548330885826594,
+      "seed": 1072838562876776,
       "steps": 7,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
@@ -140,7 +140,7 @@
   "55": {
     "inputs": {
       "text": [
-        "63",
+        "73",
         0
       ],
       "clip": [
@@ -239,26 +239,9 @@
       "title": "Save Image"
     }
   },
-  "63": {
-    "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, XDS, Thick coating style,等英文不变",
-      "prompt": "XDS, Thick coating style, little girl",
-      "model": "Qwen2.5-7B-Instruct",
-      "quantization": "none",
-      "keep_model_loaded": true,
-      "temperature": 0.1,
-      "max_new_tokens": 512,
-      "seed": 1101
-    },
-    "class_type": "Qwen2.5",
-    "_meta": {
-      "title": "Qwen2.5"
-    }
-  },
   "66": {
     "inputs": {
-      "image": "base64（无前缀）"
+      "image": ""
     },
     "class_type": "ETN_LoadImageBase64",
     "_meta": {
@@ -267,7 +250,7 @@
   },
   "70": {
     "inputs": {
-      "image": "base64（无前缀）"
+      "image": ""
     },
     "class_type": "ETN_LoadImageBase64",
     "_meta": {
@@ -289,6 +272,30 @@
     "class_type": "LayerMask: ImageToMask",
     "_meta": {
       "title": "图层遮罩：图像转遮罩"
+    }
+  },
+  "73": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, XDS, Thick coating style,等英文不变",
+      "prompt": "XDS, Thick coating style, 阳光洒满了一片绿色的草地，两只兔子抱在一起",
+      "config": [
+        "74",
+        0
+      ]
+    },
+    "class_type": "RunQwen",
+    "_meta": {
+      "title": "RunQwen"
+    }
+  },
+  "74": {
+    "inputs": {
+      "model": "Qwen3-8B-FP8"
+    },
+    "class_type": "LoadQwen",
+    "_meta": {
+      "title": "LoadQwen"
     }
   }
 }

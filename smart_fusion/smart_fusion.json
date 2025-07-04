@@ -1,7 +1,7 @@
 {
   "119": {
     "inputs": {
-      "seed": 502110444606057,
+      "seed": 1095025957314285,
       "steps": 4,
       "cfg": 1.5,
       "sampler_name": "dpmpp_sde",
@@ -41,7 +41,7 @@
   "122": {
     "inputs": {
       "text": [
-        "205",
+        "210",
         0
       ],
       "clip": [
@@ -170,28 +170,11 @@
   },
   "201": {
     "inputs": {
-      "image": "base64（无前缀）"
+      "image": ""
     },
     "class_type": "ETN_LoadImageBase64",
     "_meta": {
       "title": "Load Image (Base64)pic"
-    }
-  },
-  "205": {
-    "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
-      "prompt": "XDS, Thick coating style, 一个男的",
-      "model": "Qwen2.5-7B-Instruct",
-      "quantization": "none",
-      "keep_model_loaded": true,
-      "temperature": 0.1,
-      "max_new_tokens": 512,
-      "seed": 732
-    },
-    "class_type": "Qwen2.5",
-    "_meta": {
-      "title": "Qwen2.5"
     }
   },
   "207": {
@@ -205,6 +188,30 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "保存图像"
+    }
+  },
+  "209": {
+    "inputs": {
+      "model": "Qwen3-8B-FP8"
+    },
+    "class_type": "LoadQwen",
+    "_meta": {
+      "title": "LoadQwen"
+    }
+  },
+  "210": {
+    "inputs": {
+      "trans_switch": true,
+      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
+      "prompt": "XDS, Thick coating style, 一个男的",
+      "config": [
+        "209",
+        0
+      ]
+    },
+    "class_type": "RunQwen",
+    "_meta": {
+      "title": "RunQwen"
     }
   }
 }

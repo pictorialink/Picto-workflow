@@ -11,7 +11,7 @@
   "4": {
     "inputs": {
       "text": [
-        "114",
+        "117",
         0
       ],
       "clip": [
@@ -27,7 +27,7 @@
   "5": {
     "inputs": {
       @negative_prompt_factory(stat.current_style)
-      "text": "xxxxxx",
+      "text": "nsfw,",
       "clip": [
         "98",
         1
@@ -141,7 +141,7 @@
   "98": {
     "inputs": {
       @get_lora_name(stat.current_style)
-      "lora_name": "Kids‘ Dream.safetensors",
+      "lora_name": "CHL.safetensors",
       "strength_model": 1,
       "strength_clip": 1,
       "model": [
@@ -225,23 +225,29 @@
       "title": "加载放大模型"
     }
   },
-  "114": {
+  "116": {
+    "inputs": {
+      "model": "Qwen3-8B-FP8"
+    },
+    "class_type": "LoadQwen",
+    "_meta": {
+      "title": "LoadQwen"
+    }
+  },
+  "117": {
     "inputs": {
       "trans_switch": true,
       "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
       @prompt_factory(stat.user_input.brush_sketch.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "prompt": "CIS.Children's Illustration Style, old man near sea",
-      "model": "Qwen2.5-7B-Instruct",
-      "quantization": "none",
-      "keep_model_loaded": true,
-      "temperature": 0.1,
-      "max_new_tokens": 512,
-      @random_seed(1, 2048)
-      "seed": 457
+      "prompt": "CIS.Children's Illustration Style, 老人在海边",
+      "config": [
+        "116",
+        0
+      ]
     },
-    "class_type": "Qwen2.5",
+    "class_type": "RunQwen",
     "_meta": {
-      "title": "Qwen2.5"
+      "title": "RunQwen"
     }
   }
 }

@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 429288974237635,
+      "seed": 291374441365489,
       @get_steps(stat.current_style)
       "steps": 4,
       @get_cfg(stat.current_style)
@@ -59,7 +59,7 @@
   "6": {
     "inputs": {
       "text": [
-        "19",
+        "22",
         0
       ],
       "clip": [
@@ -106,8 +106,8 @@
     "inputs": {
       @get_lora_name(stat.current_style)
       "lora_name": "CHL.safetensors",
-      "strength_model": 1.0000000000000002,
-      "strength_clip": 1.0000000000000002,
+      "strength_model": 1,
+      "strength_clip": 1,
       "model": [
         "4",
         0
@@ -162,7 +162,7 @@
     },
     "class_type": "ImageScale",
     "_meta": {
-      "title": "图像放大"
+      "title": "缩放图像"
     }
   },
   @output_node
@@ -179,23 +179,29 @@
       "title": "Save Image"
     }
   },
-  "19": {
+  "21": {
+    "inputs": {
+      "model": "Qwen3-8B-FP8"
+    },
+    "class_type": "LoadQwen",
+    "_meta": {
+      "title": "LoadQwen"
+    }
+  },
+  "22": {
     "inputs": {
       "trans_switch": true,
-      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, DS, Thick coating style,等英文不变",
+      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, XDS, Thick coating style,等英文不变",
       @prompt_factory(stat.user_input.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "prompt": "xxxxxx",
-      "model": "Qwen2.5-7B-Instruct",
-      "quantization": "none",
-      "keep_model_loaded": true,
-      "temperature": 0.1,
-      "max_new_tokens": 512,
-      @random_seed(1, 2048)
-      "seed": 1995
+      "prompt": "white back ground,sketch of,红连衣裙女孩儿",
+      "config": [
+        "21",
+        0
+      ]
     },
-    "class_type": "Qwen2.5",
+    "class_type": "RunQwen",
     "_meta": {
-      "title": "Qwen2.5"
+      "title": "RunQwen"
     }
   }
 }

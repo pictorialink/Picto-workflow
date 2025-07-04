@@ -1,79 +1,83 @@
 {
-  "46": {
+  "75": {
     "inputs": {
-      "text": "Guess what was drawn in simple and brief words",
-      "model": "MiniCPM-V-2_6-int4",
-      "keep_model_loaded": 0.7000000000000001,
-      "top_p": 64,
-      "top_k": 2,
-      "temperature": 0.7000000000000001,
-      "repetition_penalty": 1.1,
-      "max_new_tokens": 2048,
-      "video_max_num_frames": 64,
-      "video_max_slice_nums": 2,
-      "seed": 1586,
+      "text": "用简单的词语描述画的是什么，不要在前面加“这幅画描述了”之类的词语",
+      "model": "Qwen2.5-VL-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": true,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      "seed": 888,
+      "video_path": "",
       "speak_and_recognation": {
         "__value__": [
           false,
           true
         ]
       },
-      "source_image_path_1st": [
-        "62",
+      "image": [
+        "82",
         0
       ]
     },
-    "class_type": "MiniCPM_VQA",
+    "class_type": "Qwen2.5VL",
     "_meta": {
-      "title": "MiniCPM VQA"
+      "title": "Qwen2.5VL"
     }
   },
-  "62": {
+  "79": {
     "inputs": {
-      "image": ""
+      "model": "Qwen3-8B-FP8"
     },
-    "class_type": "ETN_LoadImageBase64",
+    "class_type": "LoadQwen",
     "_meta": {
-      "title": "Load Image (Base64)"
+      "title": "LoadQwen"
     }
   },
-  "65": {
+  "80": {
     "inputs": {
       "trans_switch": true,
-      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成中文",
+      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语",
       "prompt": [
-        "46",
+        "75",
         0
       ],
-      "model": "Qwen2.5-7B-Instruct",
-      "quantization": "none",
-      "keep_model_loaded": 0.1,
-      "temperature": 0.1,
-      "max_new_tokens": 1914,
-      "seed": 212,
       "speak_and_recognation": {
         "__value__": [
           false,
           true
         ]
-      }
+      },
+      "config": [
+        "79",
+        0
+      ]
     },
-    "class_type": "Qwen2.5",
+    "class_type": "RunQwen",
     "_meta": {
-      "title": "Qwen2.5"
+      "title": "RunQwen"
     }
   },
-  "66": {
+  "81": {
     "inputs": {
-      "text_0": "这个视频似乎是对一位老人在日落时分站在海滩边的一种风格化和艺术化的描绘。画面的重点在于捕捉场景中光线和色彩相互作用所营造的宁静而沉思的氛围。",
+      "text_0": "A person walks on the street after the rain, the sunset sets, and the sky is orange.",
       "text": [
-        "65",
+        "80",
         0
       ]
     },
     "class_type": "ShowText|pysssss",
     "_meta": {
       "title": "Show Text 🐍"
+    }
+  },
+  "82": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
     }
   }
 }
