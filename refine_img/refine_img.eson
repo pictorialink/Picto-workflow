@@ -2,7 +2,7 @@
   "6": {
     "inputs": {
       "text": [
-        "202",
+        "222",
         0
       ],
       "speak_and_recognation": {
@@ -40,7 +40,7 @@
   "31": {
     "inputs": {
       @random_seed(1, 99999999)
-      "seed": 827088147923204,
+      "seed": 836157407194500,
       "steps": 18,
       "cfg": 1,
       "sampler_name": "euler",
@@ -112,22 +112,10 @@
       "title": "加载VAE"
     }
   },
-  "42": {
-    "inputs": {
-      "image": [
-        "206",
-        0
-      ]
-    },
-    "class_type": "FluxKontextImageScale",
-    "_meta": {
-      "title": "FluxKontextImageScale"
-    }
-  },
   "124": {
     "inputs": {
       "pixels": [
-        "42",
+        "215",
         0
       ],
       "vae": [
@@ -168,51 +156,6 @@
       "title": "ReferenceLatent"
     }
   },
-  @output_node
-  "196": {
-    "inputs": {
-      "filename_prefix": "ComfyUI",
-      "images": [
-        "8",
-        0
-      ]
-    },
-    "class_type": "SaveImage",
-    "_meta": {
-      "title": "保存图像"
-    }
-  },
-  "201": {
-    "inputs": {
-      "model": "Qwen3-8B-FP8"
-    },
-    "class_type": "LoadQwen",
-    "_meta": {
-      "title": "LoadQwen"
-    }
-  },
-  "202": {
-    "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
-      @value(stat.user_input.refine_image.prompt)
-      "prompt": "在屋顶站着",
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      },
-      "config": [
-        "201",
-        0
-      ]
-    },
-    "class_type": "RunQwen",
-    "_meta": {
-      "title": "RunQwen"
-    }
-  },
   "206": {
     "inputs": {
       @value(stat.user_input.refine_image.base64)
@@ -221,6 +164,108 @@
     "class_type": "ETN_LoadImageBase64",
     "_meta": {
       "title": "Load Image (Base64)"
+    }
+  },
+  "208": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      @value(stat.current_frame.standard_width)
+      "width": 1246,
+      @value(stat.current_frame.standard_height)
+      "height": 1608,
+      "crop": "center",
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  @output_node
+  "214": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "208",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "215": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 793,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 1024,
+      "crop": "disabled",
+      "image": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  "222": {
+    "inputs": {
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
+      "user_prompt": [
+        "225",
+        0
+      ],
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 1024,
+      @random_seed(1, 99999999)
+      "seed": 855967873324047,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "Qwen3_GGUF",
+    "_meta": {
+      "title": "Qwen3_GGUF"
+    }
+  },
+  "224": {
+    "inputs": {
+      @value(stat.user_input.refine_image.prompt)
+      "text": "手里拿着一束鲜花，在公园",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "Text",
+    "_meta": {
+      "title": "Text"
+    }
+  },
+  "225": {
+    "inputs": {
+      "anything": [
+        "224",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "清理显存占用"
     }
   }
 }

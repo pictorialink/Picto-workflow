@@ -220,7 +220,7 @@
       "width": 1024,
       @value(stat.user_input.redrawing_img.height)
       "height": 768,
-      "crop": "disabled",
+      "crop": "center",
       "image": [
         "60",
         0

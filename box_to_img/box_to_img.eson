@@ -230,7 +230,7 @@
       "width": 2048,
       @value(stat.current_frame.standard_height)
       "height": 2048,
-      "crop": "disabled",
+      "crop": "center",
       "image": [
         "77",
         0
