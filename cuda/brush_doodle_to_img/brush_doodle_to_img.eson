@@ -1,0 +1,268 @@
+{
+  "3": {
+    "inputs": {
+      "ckpt_name": "turbovisionxlSuperFastXLBasedOnNew_tvxlV32Bakedvae.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": [
+        "122",
+        0
+      ],
+      "clip": [
+        "98",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "5": {
+    "inputs": {
+      @negative_prompt_factory(stat.current_style)
+      "text": "nsfw,",
+      "clip": [
+        "98",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "10": {
+    "inputs": {
+      "vae_name": "sdxl_vae_fp16_fix.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "21": {
+    "inputs": {
+      "pixels": [
+        "28",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "28": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 1024,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 768,
+      "crop": "disabled",
+      "image": [
+        "86",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "86": {
+    "inputs": {
+      "black_pixel_for_xinsir_cn": false,
+      "image": [
+        "99",
+        0
+      ],
+      "mask": [
+        "99",
+        1
+      ]
+    },
+    "class_type": "InpaintPreprocessor",
+    "_meta": {
+      "title": "Inpaint Preprocessor"
+    }
+  },
+  "89": {
+    "inputs": {
+      @random_seed(1000000, 999999999)
+      "seed": 1095734804502085,
+      @get_steps(stat.current_style)
+      "steps": 4,
+      @get_cfg(stat.current_style)
+      "cfg": 1.5,
+      "sampler_name": "lcm",
+      "scheduler": "sgm_uniform",
+      @value(0.7000000000000001)
+      "denoise": 0.7000000000000001,
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "98",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "21",
+        0
+      ],
+      "optional_vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "KSampler (Efficient)",
+    "_meta": {
+      "title": "KSampler (Efficient)"
+    }
+  },
+  "98": {
+    "inputs": {
+      @get_lora_name(stat.current_style)
+      "lora_name": "CIS_V5.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "3",
+        0
+      ],
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "99": {
+    "inputs": {
+      @value(stat.user_input.brush_sketch.base64)
+      "image": ""
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)brush_pic"
+    }
+  },
+  "109": {
+    "inputs": {
+      "upscale_model": [
+        "112",
+        0
+      ],
+      "image": [
+        "89",
+        5
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "使用模型放大图像"
+    }
+  },
+  "110": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      @value(stat.current_frame.standard_width)
+      "width": 2048,
+      @value(stat.current_frame.standard_height)
+      "height": 1536,
+      "crop": "disabled",
+      "image": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  @output_node
+  "111": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "112": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "加载放大模型"
+    }
+  },
+  "120": {
+    "inputs": {
+      @prompt_factory(stat.user_input.brush_sketch.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
+      "text": "CIS.Children's Illustration Style, 老人在海边"
+    },
+    "class_type": "Text",
+    "_meta": {
+      "title": "Text"
+    }
+  },
+  "121": {
+    "inputs": {
+      "anything": [
+        "120",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "清理显存占用"
+    }
+  },
+  "122": {
+    "inputs": {
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
+      "user_prompt": [
+        "121",
+        0
+      ],
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 1024,
+      @random_seed(1000000, 999999999)
+      "seed": 821033009362521
+    },
+    "class_type": "Qwen3_GGUF",
+    "_meta": {
+      "title": "Qwen3_GGUF"
+    }
+  }
+}

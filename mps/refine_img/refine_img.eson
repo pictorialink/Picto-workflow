@@ -1,0 +1,249 @@
+{
+  "6": {
+    "inputs": {
+      "text": [
+        "202",
+        0
+      ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "31",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "31": {
+    "inputs": {
+      @random_seed(1, 99999999)
+      "seed": 904567810141414,
+      "steps": 14,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "220",
+        0
+      ],
+      "positive": [
+        "35",
+        0
+      ],
+      "negative": [
+        "135",
+        0
+      ],
+      "latent_image": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "35": {
+    "inputs": {
+      "guidance": 2.5,
+      "conditioning": [
+        "177",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "Flux引导"
+    }
+  },
+  "38": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "39": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "124": {
+    "inputs": {
+      "pixels": [
+        "215",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "135": {
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "177": {
+    "inputs": {
+      "conditioning": [
+        "6",
+        0
+      ],
+      "latent": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "201": {
+    "inputs": {
+      "model": "Qwen3-8B-FP8"
+    },
+    "class_type": "LoadQwen",
+    "_meta": {
+      "title": "LoadQwen"
+    }
+  },
+  "202": {
+    "inputs": {
+      "trans_switch": true,
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
+      @value(stat.user_input.refine_image.prompt)
+      "prompt": "手里拿着一束鲜花，在公园",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "config": [
+        "201",
+        0
+      ]
+    },
+    "class_type": "RunQwen",
+    "_meta": {
+      "title": "RunQwen"
+    }
+  },
+  "206": {
+    "inputs": {
+      @value(stat.user_input.refine_image.base64)
+      "image": "base64（无前缀）"
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
+    }
+  },
+  "208": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      @value(stat.current_frame.standard_width)
+      "width": 1246,
+      @value(stat.current_frame.standard_height)
+      "height": 1608,
+      "crop": "center",
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  @output_node
+  "214": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "208",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "215": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 793,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 1024,
+      "crop": "disabled",
+      "image": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  "220": {
+    "inputs": {
+      "unet_name": "flux1-kontext-dev-Q5_K_M.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  }
+}

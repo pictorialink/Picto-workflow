@@ -1,0 +1,78 @@
+{
+  "75": {
+    "inputs": {
+      "text": "用简单的词语描述画的是什么，不要在前面加“这幅画描述了”之类的词语",
+      "model": "Qwen2.5-VL-7B-Instruct",
+      "quantization": "none",
+      "keep_model_loaded": false,
+      "temperature": 0.1,
+      "max_new_tokens": 512,
+      @random_seed(1, 2048)
+      "seed": 149,
+      "video_path": "",
+      "image": [
+        "82",
+        0
+      ]
+    },
+    "class_type": "Qwen2.5VL",
+    "_meta": {
+      "title": "Qwen2.5VL"
+    }
+  },
+  @output_node
+  "81": {
+    "inputs": {
+      "text_undefined": "House, person, circle.",
+      "text": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "82": {
+    "inputs": {
+      @value(stat.user_input.sketch2txt.base64)
+      "image": "base64（无前缀）"
+    },
+    "class_type": "ETN_LoadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
+    }
+  },
+  "84": {
+    "inputs": {
+      "anything": [
+        "75",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "清理显存占用"
+    }
+  },
+  "85": {
+    "inputs": {
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
+      "user_prompt": [
+        "84",
+        0
+      ],
+      @translation(stat.current_language)
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 1024,
+      @random_seed(1000000, 999999999)
+      "seed": 1034953970734168
+    },
+    "class_type": "Qwen3_GGUF",
+    "_meta": {
+      "title": "Qwen3_GGUF"
+    }
+  }
+}

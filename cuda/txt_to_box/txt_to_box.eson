@@ -1,0 +1,56 @@
+{
+  @output_node
+  "6": {
+    "inputs": {
+      "text": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "7": {
+    "inputs": {
+      "anything": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "清理显存占用"
+    }
+  },
+  "8": {
+    "inputs": {
+      @split_text_to_json(stat.user_input.text, stat.current_frame.width, stat.current_frame.height)
+      "system_prompt": "xxxxxx",
+      "user_prompt": [
+        "7",
+        0
+      ],
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 1024,
+      @random_seed(1000000, 999999999)
+      "seed": 108769631589262
+    },
+    "class_type": "Qwen3_GGUF",
+    "_meta": {
+      "title": "Qwen3_GGUF"
+    }
+  },
+  "9": {
+    "inputs": {
+      @value(stat.user_input.text)
+      "text": "一条狗，小公园"
+    },
+    "class_type": "Text",
+    "_meta": {
+      "title": "Text"
+    }
+  }
+}
