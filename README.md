@@ -6,7 +6,7 @@
 ### 工作流列表
 - box_to_img: 区域生图（框生图）
 - brush_doodle_to_img: 笔刷生图
-- text_to_box: 智能构图（文本框）
+- txt_to_box: 智能构图（文本框）
 - refine_img: refine 生图
 - local_redrawing: 局部重绘
 - text_to_img: 文本图
