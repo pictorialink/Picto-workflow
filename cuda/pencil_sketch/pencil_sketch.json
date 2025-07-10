@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 550525850076868,
+      "seed": 138271392427455,
       "steps": 4,
       "cfg": 1.5,
       "sampler_name": "dpmpp_sde",
@@ -52,7 +52,7 @@
   "6": {
     "inputs": {
       "text": [
-        "55",
+        "56",
         0
       ],
       "clip": [
@@ -260,7 +260,7 @@
       "title": "清理显存占用"
     }
   },
-  "55": {
+  "56": {
     "inputs": {
       "system_prompt": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
       "user_prompt": [
@@ -269,12 +269,12 @@
       ],
       "direct": false,
       "temperature": 0.1,
-      "max_new_tokens": 1024,
-      "seed": 818636663930762
+      "max_new_tokens": 2048,
+      "seed": 285493673036890
     },
-    "class_type": "Qwen3_GGUF",
+    "class_type": "Qwen3",
     "_meta": {
-      "title": "Qwen3_GGUF"
+      "title": "Qwen3"
     }
   }
 }

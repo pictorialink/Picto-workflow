@@ -2,7 +2,7 @@
   "6": {
     "inputs": {
       "text": [
-        "222",
+        "226",
         0
       ],
       "speak_and_recognation": {
@@ -39,7 +39,7 @@
   },
   "31": {
     "inputs": {
-      "seed": 836157407194500,
+      "seed": 537487051699304,
       "steps": 18,
       "cfg": 1,
       "sampler_name": "euler",
@@ -209,29 +209,6 @@
       "title": "缩放图像"
     }
   },
-  "222": {
-    "inputs": {
-      "system_prompt": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语",
-      "user_prompt": [
-        "225",
-        0
-      ],
-      "direct": false,
-      "temperature": 0.1,
-      "max_new_tokens": 1024,
-      "seed": 855967873324047,
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      }
-    },
-    "class_type": "Qwen3_GGUF",
-    "_meta": {
-      "title": "Qwen3_GGUF"
-    }
-  },
   "224": {
     "inputs": {
       "text": "手里拿着一束鲜花，在公园",
@@ -257,6 +234,29 @@
     "class_type": "easy cleanGpuUsed",
     "_meta": {
       "title": "清理显存占用"
+    }
+  },
+  "226": {
+    "inputs": {
+      "system_prompt": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语",
+      "user_prompt": [
+        "225",
+        0
+      ],
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      "seed": 515055811354349,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "Qwen3",
+    "_meta": {
+      "title": "Qwen3"
     }
   }
 }

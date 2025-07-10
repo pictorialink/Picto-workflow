@@ -59,9 +59,15 @@
   "6": {
     "inputs": {
       "text": [
-        "24",
+        "28",
         0
       ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "10",
         1
@@ -76,6 +82,12 @@
     "inputs": {
       @negative_prompt_factory(stat.current_style)
       "text": "nsfw,",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "4",
         1
@@ -106,8 +118,8 @@
     "inputs": {
       @get_lora_name(stat.current_style)
       "lora_name": "CIS_V5.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
+      "strength_model": 1.0000000000000002,
+      "strength_clip": 1.0000000000000002,
       "model": [
         "4",
         0
@@ -179,28 +191,16 @@
       "title": "Save Image"
     }
   },
-  "24": {
-    "inputs": {
-      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
-      "user_prompt": [
-        "27",
-        0
-      ],
-      "direct": false,
-      "temperature": 0.1,
-      "max_new_tokens": 1024,
-      @random_seed(1000000, 999999999)
-      "seed": 395890201601917
-    },
-    "class_type": "Qwen3_GGUF",
-    "_meta": {
-      "title": "Qwen3_GGUF"
-    }
-  },
   "26": {
     "inputs": {
       @prompt_factory(stat.user_input.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "text": "white back ground,sketch of,红连衣裙女孩儿"
+      "text": "white back ground,sketch of,红连衣裙女孩儿",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
     "class_type": "Text",
     "_meta": {
@@ -217,6 +217,30 @@
     "class_type": "easy cleanGpuUsed",
     "_meta": {
       "title": "清理显存占用"
+    }
+  },
+  "28": {
+    "inputs": {
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
+      "user_prompt": [
+        "27",
+        0
+      ],
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      @random_seed(1000000, 999999999)
+      "seed": 515055811354349,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "Qwen3",
+    "_meta": {
+      "title": "Qwen3"
     }
   }
 }
