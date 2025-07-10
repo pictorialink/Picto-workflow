@@ -1,0 +1,24 @@
+{
+    "nodes": [
+        {
+            "repo_id": "pictorialink/ComfyUI-Qwen-CUDA",
+            "version": "^1.0.0",
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-mobilesam",
+            "version": "^1.0.0",
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-tooling-nodes",
+            "version": "^1.0.0",
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-Easy-Use",
+            "version": "^1.0.0",
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-Text-Translation",
+            "version": "^1.0.0",
+        }
+    ]
+}
