@@ -11,6 +11,10 @@
         {
             "repo_id": "pictorialink/ComfyUI-Text-Translation",
             "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-YOLO",
+            "version": "^1.0.0"
         }
     ]
 }

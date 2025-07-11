@@ -1,0 +1,8 @@
+{
+    "nodes": [
+        {
+            "repo_id": "pictorialink/ComfyUI-static-resource",
+            "version": "^1.0.0"
+        }
+    ]
+}

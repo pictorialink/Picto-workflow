@@ -9,7 +9,19 @@
             "version": "^1.0.0"
         },
         {
+            "repo_id": "pictorialink/ComfyUI-mixlab-nodes",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-inpaint-nodes",
+            "version": "^1.0.0"
+        },
+        {
             "repo_id": "pictorialink/ComfyUI-Text-Translation",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-LayerStyle",
             "version": "^1.0.0"
         }
     ]

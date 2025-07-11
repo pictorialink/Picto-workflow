@@ -5,11 +5,7 @@
             "version": "^1.0.0"
         },
         {
-            "repo_id": "pictorialink/ComfyUI-Easy-Use",
-            "version": "^1.0.0"
-        },
-        {
-            "repo_id": "pictorialink/ComfyUI-Text-Translation",
+            "repo_id": "pictorialink/ComfyUI-AdvancedLivePortrait",
             "version": "^1.0.0"
         }
     ]

@@ -1,15 +1,11 @@
 {
     "nodes": [
         {
-            "repo_id": "pictorialink/ComfyUI-Qwen-CUDA",
-            "version": "^1.0.0"
-        },
-        {
             "repo_id": "pictorialink/ComfyUI-Easy-Use",
             "version": "^1.0.0"
         },
         {
-            "repo_id": "pictorialink/ComfyUI-Text-Translation",
+            "repo_id": "pictorialink/ComfyUI-BiRefNet-Hugo",
             "version": "^1.0.0"
         }
     ]

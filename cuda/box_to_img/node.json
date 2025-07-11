@@ -5,6 +5,10 @@
             "version": "^1.0.0"
         },
         {
+            "repo_id": "pictorialink/ComfyUI-cgem156",
+            "version": "^1.0.0"
+        },
+        {
             "repo_id": "pictorialink/ComfyUI-Easy-Use",
             "version": "^1.0.0"
         },

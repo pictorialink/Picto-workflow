@@ -1,0 +1,24 @@
+{
+    "nodes": [
+        {
+            "repo_id": "pictorialink/ComfyUI-Easy-Use",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-inpaint-nodes",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-lama-remover",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-BiRefNet-HuggingFace",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-masquerade-nodes",
+            "version": "^1.0.0"
+        }
+    ]
+}
