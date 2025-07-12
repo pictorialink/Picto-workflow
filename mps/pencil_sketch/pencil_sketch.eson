@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 514876506779431,
+      "seed": 443514996317310,
       @get_steps(stat.current_style)
       "steps": 4,
       @get_cfg(stat.current_style)
@@ -59,7 +59,7 @@
   "6": {
     "inputs": {
       "text": [
-        "51",
+        "56",
         0
       ],
       "clip": [
@@ -113,7 +113,7 @@
   },
   "12": {
     "inputs": {
-      "strength": 1,
+      "strength": 1.0000000000000002,
       "start_percent": 0,
       "end_percent": 1,
       "positive": [
@@ -168,9 +168,9 @@
   "35": {
     "inputs": {
       @get_lora_name(stat.current_style)
-      "lora_name": "CHL.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
+      "lora_name": "CIS_V5.safetensors",
+      "strength_model": 1.0000000000000002,
+      "strength_clip": 1.0000000000000002,
       "model": [
         "4",
         0
@@ -252,29 +252,20 @@
       "title": "Save Image"
     }
   },
-  "50": {
+  "56": {
     "inputs": {
-      "model": "Qwen3-8B-FP8"
-    },
-    "class_type": "LoadQwen",
-    "_meta": {
-      "title": "LoadQwen"
-    }
-  },
-  "51": {
-    "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
       @prompt_factory(stat.user_input.sketch2pic.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "prompt": "Thick coating style, ittle boy, 3D cartoon, master piece",
-      "config": [
-        "50",
-        0
-      ]
+      "user_prompt": "Thick coating style, 红连衣裙女孩儿",
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      @random_seed(1000000, 999999999)
+      "seed": 608455282363540
     },
-    "class_type": "RunQwen",
+    "class_type": "Qwen3",
     "_meta": {
-      "title": "RunQwen"
+      "title": "Qwen3"
     }
   }
 }

@@ -1,29 +1,6 @@
 {
-  "10": {
-    "inputs": {
-      "trans_switch": true,
-      @split_text_to_json(stat.user_input.text, stat.current_frame.width, stat.current_frame.height)
-      "system": "xxxxxx",
-      @value(stat.user_input.text)
-      "prompt": "一条狗，小公园",
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      },
-      "config": [
-        "12",
-        0
-      ]
-    },
-    "class_type": "RunQwen",
-    "_meta": {
-      "title": "RunQwen"
-    }
-  },
   @output_node
-  "11": {
+  "6": {
     "inputs": {
       "text": [
         "10",
@@ -35,13 +12,27 @@
       "title": "Show Text 🐍"
     }
   },
-  "12": {
+  "10": {
     "inputs": {
-      "model": "Qwen3-8B-FP8"
+      @split_text_to_json(stat.user_input.text, stat.current_frame.width, stat.current_frame.height)
+      "system_prompt": "xxxxxx",
+      @value(stat.user_input.text)
+      "user_prompt": "一条狗，小公园，花",
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      @random_seed(1000000, 999999999)
+      "seed": 99086495792062,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
-    "class_type": "LoadQwen",
+    "class_type": "Qwen3",
     "_meta": {
-      "title": "LoadQwen"
+      "title": "Qwen3"
     }
   }
 }

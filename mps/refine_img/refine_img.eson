@@ -2,7 +2,7 @@
   "6": {
     "inputs": {
       "text": [
-        "202",
+        "221",
         0
       ],
       "speak_and_recognation": {
@@ -40,7 +40,7 @@
   "31": {
     "inputs": {
       @random_seed(1, 99999999)
-      "seed": 904567810141414,
+      "seed": 86004255539021,
       "steps": 14,
       "cfg": 1,
       "sampler_name": "euler",
@@ -146,37 +146,6 @@
       "title": "ReferenceLatent"
     }
   },
-  "201": {
-    "inputs": {
-      "model": "Qwen3-8B-FP8"
-    },
-    "class_type": "LoadQwen",
-    "_meta": {
-      "title": "LoadQwen"
-    }
-  },
-  "202": {
-    "inputs": {
-      "trans_switch": true,
-      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
-      @value(stat.user_input.refine_image.prompt)
-      "prompt": "手里拿着一束鲜花，在公园",
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      },
-      "config": [
-        "201",
-        0
-      ]
-    },
-    "class_type": "RunQwen",
-    "_meta": {
-      "title": "RunQwen"
-    }
-  },
   "206": {
     "inputs": {
       @value(stat.user_input.refine_image.base64)
@@ -244,6 +213,28 @@
     "class_type": "UnetLoaderGGUF",
     "_meta": {
       "title": "Unet Loader (GGUF)"
+    }
+  },
+  "221": {
+    "inputs": {
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
+      @value(stat.user_input.refine_image.prompt)
+      "user_prompt": "手里拿着一束鲜花，在公园",
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      @random_seed(1000000, 999999999)
+      "seed": 1074483974862991,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
+    },
+    "class_type": "Qwen3",
+    "_meta": {
+      "title": "Qwen3"
     }
   }
 }

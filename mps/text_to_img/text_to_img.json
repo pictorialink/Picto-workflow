@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 291374441365489,
+      "seed": 693530153495161,
       "steps": 4,
       "cfg": 1.5,
       "sampler_name": "dpmpp_sde",
@@ -52,9 +52,15 @@
   "6": {
     "inputs": {
       "text": [
-        "22",
+        "28",
         0
       ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "10",
         1
@@ -68,6 +74,12 @@
   "7": {
     "inputs": {
       "text": "nsfw,",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "4",
         1
@@ -96,9 +108,9 @@
   },
   "10": {
     "inputs": {
-      "lora_name": "CHL.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
+      "lora_name": "CIS_V5.safetensors",
+      "strength_model": 1.0000000000000002,
+      "strength_clip": 1.0000000000000002,
       "model": [
         "4",
         0
@@ -167,28 +179,24 @@
       "title": "Save Image"
     }
   },
-  "21": {
+  "28": {
     "inputs": {
-      "model": "Qwen3-8B-FP8"
+      "system_prompt": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
+      "user_prompt": "white back ground,sketch of,红连衣裙女孩儿",
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      "seed": 515055811354349,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
-    "class_type": "LoadQwen",
+    "class_type": "Qwen3",
     "_meta": {
-      "title": "LoadQwen"
-    }
-  },
-  "22": {
-    "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
-      "prompt": "white back ground,sketch of,红连衣裙女孩儿",
-      "config": [
-        "21",
-        0
-      ]
-    },
-    "class_type": "RunQwen",
-    "_meta": {
-      "title": "RunQwen"
+      "title": "Qwen3"
     }
   }
 }

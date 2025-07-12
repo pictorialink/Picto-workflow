@@ -11,9 +11,15 @@
   "4": {
     "inputs": {
       "text": [
-        "117",
+        "123",
         0
       ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "98",
         1
@@ -28,6 +34,12 @@
     "inputs": {
       @negative_prompt_factory(stat.current_style)
       "text": "nsfw,",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "98",
         1
@@ -109,7 +121,7 @@
       "sampler_name": "lcm",
       "scheduler": "sgm_uniform",
       @value(0.7000000000000001)
-      "denoise": 0.7000000000000001,
+      "denoise": 0.7000000000000002,
       "preview_method": "auto",
       "vae_decode": "true",
       "model": [
@@ -141,9 +153,9 @@
   "98": {
     "inputs": {
       @get_lora_name(stat.current_style)
-      "lora_name": "CHL.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
+      "lora_name": "CIS_V5.safetensors",
+      "strength_model": 1.0000000000000002,
+      "strength_clip": 1.0000000000000002,
       "model": [
         "3",
         0
@@ -225,29 +237,26 @@
       "title": "加载放大模型"
     }
   },
-  "116": {
+  "123": {
     "inputs": {
-      "model": "Qwen3-8B-FP8"
-    },
-    "class_type": "LoadQwen",
-    "_meta": {
-      "title": "LoadQwen"
-    }
-  },
-  "117": {
-    "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
       @prompt_factory(stat.user_input.brush_sketch.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "prompt": "CIS.Children's Illustration Style, 老人在海边",
-      "config": [
-        "116",
-        0
-      ]
+      "user_prompt": "CIS.Children's Illustration Style, 老人在海边",
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      @random_seed(1000000, 999999999)
+      "seed": 203625007067670,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
-    "class_type": "RunQwen",
+    "class_type": "Qwen3",
     "_meta": {
-      "title": "RunQwen"
+      "title": "Qwen3"
     }
   }
 }

@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 1072838562876776,
+      "seed": 809865398494116,
       "steps": 7,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
@@ -100,7 +100,7 @@
         2
       ],
       "pixels": [
-        "66",
+        "85",
         0
       ],
       "mask": [
@@ -141,7 +141,7 @@
   "55": {
     "inputs": {
       "text": [
-        "73",
+        "83",
         0
       ],
       "clip": [
@@ -171,9 +171,9 @@
   "57": {
     "inputs": {
       @get_lora_name(stat.current_style)
-      "lora_name": "CHL.safetensors",
-      "strength_model": 1,
-      "strength_clip": 1,
+      "lora_name": "CIS_V5.safetensors",
+      "strength_model": 1.0000000000000002,
+      "strength_clip": 1.0000000000000002,
       "model": [
         "4",
         0
@@ -217,9 +217,9 @@
     "inputs": {
       "upscale_method": "lanczos",
       @value(stat.user_input.redrawing_img.width)
-      "width": 1024,
+      "width": 2480,
       @value(stat.user_input.redrawing_img.height)
-      "height": 768,
+      "height": 3500,
       "crop": "disabled",
       "image": [
         "60",
@@ -270,10 +270,10 @@
       "channel": "L(LAB)",
       "black_point": 0,
       "white_point": 255,
-      "gray_point": 1,
+      "gray_point": 1.0000000000000002,
       "invert_output_mask": false,
       "image": [
-        "70",
+        "86",
         0
       ]
     },
@@ -282,29 +282,56 @@
       "title": "图层遮罩：图像转遮罩"
     }
   },
-  "73": {
+  "83": {
     "inputs": {
-      "trans_switch": true,
-      "system": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
+      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
       @prompt_factory_redrawing(stat.user_input.repaint.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "prompt": "Thick coating style, 阳光洒满了一片绿色的草地，两只兔子抱在一起",
-      "config": [
-        "74",
+      "user_prompt": " CIS.Illustration Style, 一个女孩儿穿着蓝色裙子",
+      "direct": false,
+      "temperature": 0.1,
+      "max_new_tokens": 2048,
+      @random_seed(1000000, 999999999)
+      "seed": 449861785546170
+    },
+    "class_type": "Qwen3",
+    "_meta": {
+      "title": "Qwen3"
+    }
+  },
+  "85": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 731,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 1024,
+      "crop": "disabled",
+      "image": [
+        "66",
         0
       ]
     },
-    "class_type": "RunQwen",
+    "class_type": "ImageScale",
     "_meta": {
-      "title": "RunQwen"
+      "title": "缩放图像"
     }
   },
-  "74": {
+  "86": {
     "inputs": {
-      "model": "Qwen3-8B-FP8"
+      "upscale_method": "nearest-exact",
+      @value(stat.current_frame.standard_zoom_width)
+      "width": 731,
+      @value(stat.current_frame.standard_zoom_height)
+      "height": 1024,
+      "crop": "disabled",
+      "image": [
+        "70",
+        0
+      ]
     },
-    "class_type": "LoadQwen",
+    "class_type": "ImageScale",
     "_meta": {
-      "title": "LoadQwen"
+      "title": "缩放图像"
     }
   }
 }
