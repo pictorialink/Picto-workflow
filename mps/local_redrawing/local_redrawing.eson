@@ -216,9 +216,9 @@
   "61": {
     "inputs": {
       "upscale_method": "lanczos",
-      @value(stat.user_input.redrawing_img.width)
+      @value(stat.current_image.standard_width)
       "width": 2480,
-      @value(stat.user_input.redrawing_img.height)
+      @value(stat.current_image.standard_height)
       "height": 3500,
       "crop": "center",
       "image": [
