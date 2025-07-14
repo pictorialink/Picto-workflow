@@ -1,0 +1,12 @@
+{
+    "nodes": [
+        {
+            "repo_id": "pictorialink/ComfyUI-Qwen-MPS",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-Custom-Scripts",
+            "version": "^1.0.0"
+        }
+    ]
+}

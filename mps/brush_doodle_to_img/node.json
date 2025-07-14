@@ -1,0 +1,24 @@
+{
+    "nodes": [
+        {
+            "repo_id": "pictorialink/ComfyUI-Qwen-MPS",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-controlnet_aux",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-Easy-Use",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-Text-Translation",
+            "version": "^1.0.0"
+        },
+        {
+            "repo_id": "pictorialink/ComfyUI-efficiency-nodes",
+            "version": "^1.0.0"
+        }
+    ]
+}
