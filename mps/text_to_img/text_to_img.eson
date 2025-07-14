@@ -166,7 +166,7 @@
       "width": 1536,
       @value(stat.current_frame.standard_height)
       "height": 1536,
-      "crop": "disabled",
+      "crop": "center",
       "image": [
         "13",
         0

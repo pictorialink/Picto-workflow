@@ -155,7 +155,7 @@
       "upscale_method": "lanczos",
       "width": 1536,
       "height": 1536,
-      "crop": "disabled",
+      "crop": "center",
       "image": [
         "13",
         0

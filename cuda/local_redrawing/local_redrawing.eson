@@ -220,7 +220,7 @@
       "width": 2480,
       @value(stat.user_input.redrawing_img.height)
       "height": 3500,
-      "crop": "disabled",
+      "crop": "center",
       "image": [
         "60",
         0
@@ -325,9 +325,9 @@
   "85": {
     "inputs": {
       "upscale_method": "nearest-exact",
-      @value(stat.current_frame.standard_zoom_width)
+      @value(stat.current_image.standard_zoom_width)
       "width": 731,
-      @value(stat.current_frame.standard_zoom_height)
+      @value(stat.current_image.standard_zoom_height)
       "height": 1024,
       "crop": "disabled",
       "image": [
@@ -343,9 +343,9 @@
   "86": {
     "inputs": {
       "upscale_method": "nearest-exact",
-      @value(stat.current_frame.standard_zoom_width)
+      @value(stat.current_image.standard_zoom_width)
       "width": 731,
-      @value(stat.current_frame.standard_zoom_height)
+      @value(stat.current_image.standard_zoom_height)
       "height": 1024,
       "crop": "disabled",
       "image": [

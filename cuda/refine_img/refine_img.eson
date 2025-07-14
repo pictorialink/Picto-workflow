@@ -169,9 +169,9 @@
   "208": {
     "inputs": {
       "upscale_method": "lanczos",
-      @value(stat.current_frame.standard_width)
+      @value(stat.current_image.standard_width)
       "width": 1246,
-      @value(stat.current_frame.standard_height)
+      @value(stat.current_image.standard_height)
       "height": 1608,
       "crop": "center",
       "image": [
@@ -201,9 +201,9 @@
   "215": {
     "inputs": {
       "upscale_method": "nearest-exact",
-      @value(stat.current_frame.standard_zoom_width)
+      @value(stat.current_image.standard_zoom_width)
       "width": 793,
-      @value(stat.current_frame.standard_zoom_height)
+      @value(stat.current_image.standard_zoom_height)
       "height": 1024,
       "crop": "disabled",
       "image": [

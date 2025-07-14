@@ -73,9 +73,9 @@
   },
   "16": {
     "inputs": {
-      @value(stat.current_frame.standard_zoom_width)
+      @value(stat.current_image.standard_zoom_width)
       "width": 768,
-      @value(stat.current_frame.standard_zoom_height)
+      @value(stat.current_image.standard_zoom_height)
       "height": 768,
       "batch_size": 1
     },
@@ -226,11 +226,11 @@
   "78": {
     "inputs": {
       "upscale_method": "lanczos",
-      @value(stat.current_frame.standard_width)
+      @value(stat.current_image.standard_width)
       "width": 2048,
-      @value(stat.current_frame.standard_height)
+      @value(stat.current_image.standard_height)
       "height": 2048,
-      "crop": "disabled",
+      "crop": "center",
       "image": [
         "77",
         0
