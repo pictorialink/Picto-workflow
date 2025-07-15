@@ -2,7 +2,7 @@
   "119": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 1061195626103874,
+      "seed": 1010892583599283,
       "steps": 4,
       "cfg": 1.5,
       "sampler_name": "dpmpp_sde",
@@ -45,6 +45,12 @@
         "215",
         0
       ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "200",
         1
@@ -59,6 +65,12 @@
     "inputs": {
       @negative_prompt_factory(stat.current_style)
       "text": "NSFW",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "120",
         1
@@ -88,7 +100,7 @@
   "126": {
     "inputs": {
       "pixels": [
-        "201",
+        "216",
         0
       ],
       "vae": [
@@ -142,7 +154,7 @@
       "preprocessor": "DepthAnythingV2Preprocessor",
       "resolution": 512,
       "image": [
-        "201",
+        "216",
         0
       ]
     },
@@ -171,16 +183,6 @@
       "title": "Load LoRA"
     }
   },
-  "201": {
-    "inputs": {
-      @value(stat.user_input.fusion.base64)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)pic"
-    }
-  },
   @output_node
   "207": {
     "inputs": {
@@ -198,7 +200,13 @@
   "212": {
     "inputs": {
       @prompt_factory(stat.user_input.fusion.prompt, stat.current_style, stat.operationNormal, stat.rolePrompt)
-      "text": "Thick coating style, 一个男的"
+      "text": "Thick coating style, 一个男的",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
     "class_type": "Text",
     "_meta": {
@@ -228,11 +236,27 @@
       "temperature": 0.1,
       "max_new_tokens": 2048,
       @random_seed(1000000, 999999999)
-      "seed": 697471616346213
+      "seed": 203625007067670,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "216": {
+    "inputs": {
+      @value(stat.user_input.fusion.imageName)
+      "image": "0.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

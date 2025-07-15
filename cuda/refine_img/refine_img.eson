@@ -40,7 +40,7 @@
   "31": {
     "inputs": {
       @random_seed(1, 99999999)
-      "seed": 537487051699304,
+      "seed": 101065737789482,
       "steps": 18,
       "cfg": 1,
       "sampler_name": "euler",
@@ -156,23 +156,13 @@
       "title": "ReferenceLatent"
     }
   },
-  "206": {
-    "inputs": {
-      @value(stat.user_input.refine_image.base64)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
-    }
-  },
   "208": {
     "inputs": {
       "upscale_method": "lanczos",
       @value(stat.current_image.standard_width)
-      "width": 1246,
+      "width": 1536,
       @value(stat.current_image.standard_height)
-      "height": 1608,
+      "height": 2048,
       "crop": "center",
       "image": [
         "8",
@@ -184,20 +174,6 @@
       "title": "缩放图像"
     }
   },
-  @output_node
-  "214": {
-    "inputs": {
-      "filename_prefix": "ComfyUI",
-      "images": [
-        "208",
-        0
-      ]
-    },
-    "class_type": "SaveImage",
-    "_meta": {
-      "title": "保存图像"
-    }
-  },
   "215": {
     "inputs": {
       "upscale_method": "nearest-exact",
@@ -207,7 +183,7 @@
       "height": 1024,
       "crop": "disabled",
       "image": [
-        "206",
+        "229",
         0
       ]
     },
@@ -255,7 +231,7 @@
       "temperature": 0.1,
       "max_new_tokens": 2048,
       @random_seed(1, 99999999)
-      "seed": 515055811354349,
+      "seed": 45191908026800,
       "speak_and_recognation": {
         "__value__": [
           false,
@@ -266,6 +242,44 @@
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "227": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1.0000000000000002,
+      "image": [
+        "208",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
+    }
+  },
+  @output_node
+  "228": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "227",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "229": {
+    "inputs": {
+      @value(stat.user_input.refine_image.imageName)
+      "image": "0.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

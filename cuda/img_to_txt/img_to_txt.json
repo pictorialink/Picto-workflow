@@ -1,7 +1,6 @@
 {
   "81": {
     "inputs": {
-      "text_0": "The main subject in the image is an elderly man. He has gray-white hair and a beard, and wears glasses with purple lenses. He is dressed in a purple leather jacket, with a black garment underneath. His body is positioned sideways, facing to the right, with his head slightly tilted back, as if gazing into the distance.",
       "text": [
         "88",
         0
@@ -22,15 +21,6 @@
     "class_type": "easy cleanGpuUsed",
     "_meta": {
       "title": "清理显存占用"
-    }
-  },
-  "87": {
-    "inputs": {
-      "image": ""
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
     }
   },
   "88": {
@@ -71,13 +61,22 @@
         ]
       },
       "image": [
-        "87",
+        "90",
         0
       ]
     },
     "class_type": "Qwen25_VL",
     "_meta": {
       "title": "Qwen25_VL"
+    }
+  },
+  "90": {
+    "inputs": {
+      "image": "0.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

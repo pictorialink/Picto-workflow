@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 872280415327041,
+      "seed": 806797201974468,
       @value(4)
       "steps": 4,
       @value(1.5)
@@ -62,12 +62,6 @@
         "85",
         0
       ],
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      },
       "clip": [
         "60",
         1
@@ -82,12 +76,6 @@
     "inputs": {
       @negative_prompt_factory(stat.current_style)
       "text": "nsfw",
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      },
       "clip": [
         "4",
         1
@@ -174,7 +162,7 @@
       "condition": "always",
       "multiple_of": 0,
       "image": [
-        "62",
+        "86",
         0
       ]
     },
@@ -217,26 +205,10 @@
       "title": "Load LoRA"
     }
   },
-  "62": {
-    "inputs": {
-      @value(stat.user_input.pose.base64)
-      "image": ""
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)pose"
-    }
-  },
   "82": {
     "inputs": {
       @prompt_factory(stat.user_input.pose.prompt, stat.current_style, stat.operationRole, stat.rolePrompt)
-      "text": "Thick coating style, 漂亮女孩儿穿着红裙子",
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      }
+      "text": "Thick coating style, 男人，白衬衫，牛子裤"
     },
     "class_type": "Text",
     "_meta": {
@@ -266,17 +238,21 @@
       "temperature": 0.1,
       "max_new_tokens": 2048,
       @random_seed(1000000, 999999999)
-      "seed": 203625007067670,
-      "speak_and_recognation": {
-        "__value__": [
-          false,
-          true
-        ]
-      }
+      "seed": 907781822284097
     },
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "86": {
+    "inputs": {
+      @value(stat.user_input.pose.imageName)
+      "image": "0.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }
