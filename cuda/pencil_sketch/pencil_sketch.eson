@@ -45,9 +45,9 @@
   },
   "5": {
     "inputs": {
-      @value(stat.current_image.standard_zoom_width)
+      @value(stat.current_frame.standard_zoom_width)
       "width": 1024,
-      @value(stat.current_image.standard_zoom_height)
+      @value(stat.current_frame.standard_zoom_height)
       "height": 512,
       "batch_size": 1
     },
@@ -223,9 +223,9 @@
   "45": {
     "inputs": {
       "upscale_method": "lanczos",
-      @value(stat.current_image.standard_width)
+      @value(stat.current_frame.standard_width)
       "width": 2048,
-      @value(stat.current_image.standard_height)
+      @value(stat.current_frame.standard_height)
       "height": 1024,
       "crop": "center",
       "image": [

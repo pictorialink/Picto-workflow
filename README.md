@@ -12,6 +12,7 @@
 - text_to_img: 文本图
 - img_guidance: 提取主体、背景文本
 - pencil_sketch.eson: 草图生图/风格化
+- stylize_img.eson: 草图生图/风格化
 - smart_fusion: 智能融合
 - pose_to_img: pose 生图
 - img_to_txt: 图推文、草图推词
