@@ -184,7 +184,7 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "124",
+        "217",
         0
       ]
     },
@@ -250,6 +250,20 @@
     "class_type": "LoadImage",
     "_meta": {
       "title": "加载图像"
+    }
+  },
+  "217": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1,
+      "image": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
     }
   }
 }
