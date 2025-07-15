@@ -16,7 +16,6 @@
 - smart_fusion: 智能融合
 - pose_to_img: pose 生图
 - img_to_txt: 图推文、草图推词
-- doodle_to_txt: 图推文、草图推词
 
 ### 注意
 
