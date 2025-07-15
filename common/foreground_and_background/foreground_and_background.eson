@@ -20,12 +20,12 @@
   },
   "190": {
     "inputs": {
-      @value(stat.user_input.split_back_pro.mask)
-      "mask": "base64（无前缀）"
+      @value(stat.user_input.split_back_pro.maskName)
+      "image": "0.png"
     },
-    "class_type": "ETN_LoadMaskBase64",
+    "class_type": "LoadImage",
     "_meta": {
-      "title": "Load Mask (Base64)"
+      "title": "加载图像"
     }
   },
   "191": {
@@ -117,12 +117,12 @@
   },
   "197": {
     "inputs": {
-      @value(stat.user_input.split_back_pro.base64)
-      "image": "base64（无前缀）"
+      @value(stat.user_input.split_back_pro.imageName)
+      "image": "0.png"
     },
-    "class_type": "ETN_LoadImageBase64",
+    "class_type": "LoadImage",
     "_meta": {
-      "title": "Load Image (Base64)pic"
+      "title": "加载图像"
     }
   }
 }

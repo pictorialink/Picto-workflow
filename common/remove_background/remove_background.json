@@ -29,11 +29,11 @@
   },
   "3": {
     "inputs": {
-      "image": "base64（无前缀）"
+      "image": "0.png"
     },
-    "class_type": "ETN_LoadImageBase64",
+    "class_type": "LoadImage",
     "_meta": {
-      "title": "Load Image (Base64)"
+      "title": "加载图像"
     }
   }
 }

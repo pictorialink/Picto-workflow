@@ -27,12 +27,12 @@
   },
   "4": {
     "inputs": {
-      @value(stat.user_input.pic2coord.base64)
-      "image": "base64（无前缀）"
+      @value(stat.user_input.pic2coord.imageName)
+      "image": "0.png"
     },
-    "class_type": "ETN_LoadImageBase64",
+    "class_type": "LoadImage",
     "_meta": {
-      "title": "Load Image (Base64)"
+      "title": "加载图像"
     }
   }
 }
