@@ -146,23 +146,13 @@
       "title": "ReferenceLatent"
     }
   },
-  "206": {
-    "inputs": {
-      @value(stat.user_input.refine_image.base64)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
-    }
-  },
   "208": {
     "inputs": {
       "upscale_method": "lanczos",
       @value(stat.current_image.standard_width)
-      "width": 1246,
+      "width": 793,
       @value(stat.current_image.standard_height)
-      "height": 1608,
+      "height": 1024,
       "crop": "center",
       "image": [
         "8",
@@ -179,7 +169,7 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "208",
+        "223",
         0
       ]
     },
@@ -197,7 +187,7 @@
       "height": 1024,
       "crop": "disabled",
       "image": [
-        "206",
+        "222",
         0
       ]
     },
@@ -235,6 +225,30 @@
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "222": {
+    "inputs": {
+      @value(stat.user_input.refine_image.imageName)
+      "image": "ComfyUI_02225_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "223": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1,
+      "image": [
+        "208",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
     }
   }
 }

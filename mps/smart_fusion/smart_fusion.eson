@@ -100,7 +100,7 @@
   "126": {
     "inputs": {
       "pixels": [
-        "201",
+        "216",
         0
       ],
       "vae": [
@@ -154,7 +154,7 @@
       "preprocessor": "DepthAnythingV2Preprocessor",
       "resolution": 512,
       "image": [
-        "201",
+        "216",
         0
       ]
     },
@@ -183,22 +183,12 @@
       "title": "Load LoRA"
     }
   },
-  "201": {
-    "inputs": {
-      @value(stat.user_input.fusion.base64)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)pic"
-    }
-  },
   @output_node
   "207": {
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "124",
+        "217",
         0
       ]
     },
@@ -227,6 +217,30 @@
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "216": {
+    "inputs": {
+      @value(stat.user_input.fusion.imageName)
+      "image": "ComfyUI_02225_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "217": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1,
+      "image": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
     }
   }
 }

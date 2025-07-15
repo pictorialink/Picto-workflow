@@ -174,7 +174,7 @@
       "condition": "always",
       "multiple_of": 0,
       "image": [
-        "62",
+        "87",
         0
       ]
     },
@@ -217,16 +217,6 @@
       "title": "Load LoRA"
     }
   },
-  "62": {
-    "inputs": {
-      @value(stat.user_input.pose.base64)
-      "image": ""
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)pose"
-    }
-  },
   "85": {
     "inputs": {
       "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的white back ground,sketch of, JY illustration,ve ry simple Lines and colors,simple background，simple scene, CIS. Children's Illustration Style, Thick coating style,等英文不变",
@@ -247,6 +237,16 @@
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "87": {
+    "inputs": {
+      @value(stat.user_input.pose.imageName)
+      "image": "ComfyUI_02225_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

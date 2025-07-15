@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 443514996317310,
+      "seed": 688279265104646,
       @get_steps(stat.current_style)
       "steps": 4,
       @get_cfg(stat.current_style)
@@ -62,6 +62,12 @@
         "56",
         0
       ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "35",
         1
@@ -76,6 +82,12 @@
     "inputs": {
       @negative_prompt_factory(stat.current_style)
       "text": "nsfw",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "4",
         1
@@ -143,7 +155,7 @@
       "threshold": 32,
       "resolution": 512,
       "image": [
-        "39",
+        "58",
         0
       ]
     },
@@ -168,7 +180,7 @@
   "35": {
     "inputs": {
       @get_lora_name(stat.current_style)
-      "lora_name": "CIS_V5.safetensors",
+      "lora_name": "CHL.safetensors",
       "strength_model": 1.0000000000000002,
       "strength_clip": 1.0000000000000002,
       "model": [
@@ -185,41 +197,6 @@
       "title": "Load LoRA"
     }
   },
-  "39": {
-    "inputs": {
-      @value(stat.user_input.sketch2pic.base64)
-      "image": ""
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
-    }
-  },
-  "43": {
-    "inputs": {
-      "model_name": "4x-UltraSharp.pth"
-    },
-    "class_type": "UpscaleModelLoader",
-    "_meta": {
-      "title": "加载放大模型"
-    }
-  },
-  "44": {
-    "inputs": {
-      "upscale_model": [
-        "43",
-        0
-      ],
-      "image": [
-        "8",
-        0
-      ]
-    },
-    "class_type": "ImageUpscaleWithModel",
-    "_meta": {
-      "title": "使用模型放大图像"
-    }
-  },
   "45": {
     "inputs": {
       "upscale_method": "lanczos",
@@ -229,7 +206,7 @@
       "height": 1024,
       "crop": "center",
       "image": [
-        "44",
+        "8",
         0
       ]
     },
@@ -243,7 +220,7 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "45",
+        "57",
         0
       ]
     },
@@ -261,11 +238,41 @@
       "temperature": 0.1,
       "max_new_tokens": 2048,
       @random_seed(1000000, 999999999)
-      "seed": 608455282363540
+      "seed": 780104747872151,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "57": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1.0000000000000002,
+      "image": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
+    }
+  },
+  "58": {
+    "inputs": {
+      @value(stat.user_input.sketch2pic.imageName)
+      "image": "1.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

@@ -2,7 +2,7 @@
   "3": {
     "inputs": {
       @random_seed(1000000, 999999999)
-      "seed": 809865398494116,
+      "seed": 1013336557386954,
       "steps": 7,
       "cfg": 3,
       "sampler_name": "dpmpp_sde",
@@ -144,6 +144,12 @@
         "83",
         0
       ],
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "57",
         1
@@ -158,6 +164,12 @@
     "inputs": {
       @negative_prompt_factory(stat.current_style)
       "text": "nsfw,",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "4",
         1
@@ -171,7 +183,7 @@
   "57": {
     "inputs": {
       @get_lora_name(stat.current_style)
-      "lora_name": "CIS_V5.safetensors",
+      "lora_name": "CHL.safetensors",
       "strength_model": 1.0000000000000002,
       "strength_clip": 1.0000000000000002,
       "model": [
@@ -236,33 +248,13 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "61",
+        "87",
         0
       ]
     },
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
-    }
-  },
-  "66": {
-    "inputs": {
-      @value(stat.user_input.repaint.base64)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
-    }
-  },
-  "70": {
-    "inputs": {
-      @value(stat.user_input.repaint.mask)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
     }
   },
   "72": {
@@ -291,7 +283,13 @@
       "temperature": 0.1,
       "max_new_tokens": 2048,
       @random_seed(1000000, 999999999)
-      "seed": 449861785546170
+      "seed": 805843605357377,
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      }
     },
     "class_type": "Qwen3",
     "_meta": {
@@ -302,12 +300,12 @@
     "inputs": {
       "upscale_method": "nearest-exact",
       @value(stat.current_image.standard_zoom_width)
-      "width": 731,
+      "width": 1024,
       @value(stat.current_image.standard_zoom_height)
-      "height": 1024,
+      "height": 731,
       "crop": "disabled",
       "image": [
-        "66",
+        "88",
         0
       ]
     },
@@ -320,18 +318,52 @@
     "inputs": {
       "upscale_method": "nearest-exact",
       @value(stat.current_image.standard_zoom_width)
-      "width": 731,
+      "width": 1024,
       @value(stat.current_image.standard_zoom_height)
-      "height": 1024,
+      "height": 731,
       "crop": "disabled",
       "image": [
-        "70",
+        "89",
         0
       ]
     },
     "class_type": "ImageScale",
     "_meta": {
       "title": "缩放图像"
+    }
+  },
+  "87": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1.0000000000000002,
+      "image": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
+    }
+  },
+  "88": {
+    "inputs": {
+      @value(stat.user_input.repaint.imageName)
+      "image": "截屏2025-06-23-10.02.19.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "89": {
+    "inputs": {
+      @value(stat.user_input.repaint.maskName)
+      "image": "p.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

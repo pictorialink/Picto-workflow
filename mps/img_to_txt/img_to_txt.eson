@@ -12,16 +12,6 @@
       "title": "Show Text 🐍"
     }
   },
-  "87": {
-    "inputs": {
-      @value(stat.user_input.pic2txt.base64)
-      "image": "base64（无前缀）"
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)"
-    }
-  },
   "88": {
     "inputs": {
       "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语",
@@ -61,13 +51,23 @@
         ]
       },
       "image": [
-        "87",
+        "90",
         0
       ]
     },
     "class_type": "Qwen25_VL",
     "_meta": {
       "title": "Qwen25_VL"
+    }
+  },
+  "90": {
+    "inputs": {
+      @value(stat.user_input.pic2txt.imageName)
+      "image": "ComfyUI_02225_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

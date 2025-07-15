@@ -97,11 +97,11 @@
     "inputs": {
       "black_pixel_for_xinsir_cn": false,
       "image": [
-        "99",
+        "125",
         0
       ],
       "mask": [
-        "99",
+        "125",
         1
       ]
     },
@@ -170,32 +170,6 @@
       "title": "Load LoRA"
     }
   },
-  "99": {
-    "inputs": {
-      @value(stat.user_input.brush_sketch.base64)
-      "image": ""
-    },
-    "class_type": "ETN_LoadImageBase64",
-    "_meta": {
-      "title": "Load Image (Base64)brush_pic"
-    }
-  },
-  "109": {
-    "inputs": {
-      "upscale_model": [
-        "112",
-        0
-      ],
-      "image": [
-        "89",
-        5
-      ]
-    },
-    "class_type": "ImageUpscaleWithModel",
-    "_meta": {
-      "title": "使用模型放大图像"
-    }
-  },
   "110": {
     "inputs": {
       "upscale_method": "lanczos",
@@ -205,8 +179,8 @@
       "height": 1536,
       "crop": "center",
       "image": [
-        "109",
-        0
+        "89",
+        5
       ]
     },
     "class_type": "ImageScale",
@@ -219,22 +193,13 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "110",
+        "124",
         0
       ]
     },
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
-    }
-  },
-  "112": {
-    "inputs": {
-      "model_name": "4x-UltraSharp.pth"
-    },
-    "class_type": "UpscaleModelLoader",
-    "_meta": {
-      "title": "加载放大模型"
     }
   },
   "123": {
@@ -257,6 +222,30 @@
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "124": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1.0000000000000002,
+      "image": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
+    }
+  },
+  "125": {
+    "inputs": {
+      @value(stat.user_input.brush_sketch.imageName)
+      "image": "ComfyUI_02225_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
     }
   }
 }

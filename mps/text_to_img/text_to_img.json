@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 693530153495161,
+      "seed": 883998879144469,
       "steps": 4,
       "cfg": 1.5,
       "sampler_name": "dpmpp_sde",
@@ -125,31 +125,6 @@
       "title": "Load LoRA"
     }
   },
-  "12": {
-    "inputs": {
-      "model_name": "4x-UltraSharp.pth"
-    },
-    "class_type": "UpscaleModelLoader",
-    "_meta": {
-      "title": "加载放大模型"
-    }
-  },
-  "13": {
-    "inputs": {
-      "upscale_model": [
-        "12",
-        0
-      ],
-      "image": [
-        "8",
-        0
-      ]
-    },
-    "class_type": "ImageUpscaleWithModel",
-    "_meta": {
-      "title": "使用模型放大图像"
-    }
-  },
   "14": {
     "inputs": {
       "upscale_method": "lanczos",
@@ -157,7 +132,7 @@
       "height": 1536,
       "crop": "center",
       "image": [
-        "13",
+        "8",
         0
       ]
     },
@@ -170,7 +145,7 @@
     "inputs": {
       "filename_prefix": "ComfyUI",
       "images": [
-        "14",
+        "29",
         0
       ]
     },
@@ -186,7 +161,7 @@
       "direct": false,
       "temperature": 0.1,
       "max_new_tokens": 2048,
-      "seed": 515055811354349,
+      "seed": 147264917245384,
       "speak_and_recognation": {
         "__value__": [
           false,
@@ -197,6 +172,20 @@
     "class_type": "Qwen3",
     "_meta": {
       "title": "Qwen3"
+    }
+  },
+  "29": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1.0000000000000002,
+      "image": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "缩放图像（像素）"
     }
   }
 }
