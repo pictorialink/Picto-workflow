@@ -286,7 +286,8 @@
   },
   "83": {
     "inputs": {
-      "system_prompt": "系统提示词：\\n你是一个擅长英文的翻译专家，返回的数据要求如下：\\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\\n2、将输入内容翻译成英语\\n3、保留每一段开头的sketch of, JY illustration,very simple Lines and colors,simple background，simple scene, CIS.Illustration Style, Thick coating style,等英文不变",
+      @prompt_llm_2()
+      "system_prompt": "",
       "user_prompt": [
         "81",
         0
