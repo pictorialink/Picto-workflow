@@ -39,7 +39,6 @@
   },
   "31": {
     "inputs": {
-      @random_seed(1, 99999999)
       "seed": 101065737789482,
       "steps": 18,
       "cfg": 1,
@@ -83,12 +82,11 @@
   },
   "37": {
     "inputs": {
-      "unet_name": "flux1-dev-kontext_fp8_scaled.safetensors",
-      "weight_dtype": "default"
+      "unet_name": "flux1-kontext-dev-Q5_K_M.gguf"
     },
-    "class_type": "UNETLoader",
+    "class_type": "UnetLoaderGGUF",
     "_meta": {
-      "title": "UNet加载器"
+      "title": "Unet Loader (GGUF)"
     }
   },
   "38": {
@@ -159,9 +157,7 @@
   "208": {
     "inputs": {
       "upscale_method": "lanczos",
-      @value(stat.current_image.standard_width)
       "width": 1536,
-      @value(stat.current_image.standard_height)
       "height": 2048,
       "crop": "center",
       "image": [
@@ -177,9 +173,7 @@
   "215": {
     "inputs": {
       "upscale_method": "nearest-exact",
-      @value(stat.current_image.standard_zoom_width)
       "width": 793,
-      @value(stat.current_image.standard_zoom_height)
       "height": 1024,
       "crop": "disabled",
       "image": [
@@ -194,7 +188,6 @@
   },
   "224": {
     "inputs": {
-      @value(stat.user_input.refine_image.prompt)
       "text": "手里拿着一束鲜花，在公园",
       "speak_and_recognation": {
         "__value__": [
@@ -222,8 +215,7 @@
   },
   "226": {
     "inputs": {
-      @prompt_llm_3()
-      "system_prompt": "",
+      "system_prompt": "系统提示词：\n你是一个擅长英文的翻译专家，返回的数据要求如下：\n1、按行翻译，结果必须和输入匹配，不要多行也不要少行\n2、将输入内容翻译成英语",
       "user_prompt": [
         "225",
         0
@@ -231,7 +223,6 @@
       "direct": false,
       "temperature": 0.1,
       "max_new_tokens": 2048,
-      @random_seed(1, 99999999)
       "seed": 45191908026800,
       "speak_and_recognation": {
         "__value__": [
@@ -259,7 +250,6 @@
       "title": "缩放图像（像素）"
     }
   },
-  @output_node
   "228": {
     "inputs": {
       "filename_prefix": "ComfyUI",
@@ -275,7 +265,6 @@
   },
   "229": {
     "inputs": {
-      @value(stat.user_input.refine_image.imageName)
       "image": "0.png"
     },
     "class_type": "LoadImage",

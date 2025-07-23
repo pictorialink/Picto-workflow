@@ -20,30 +20,7 @@
 ### 注意
 
 1. main分支内容为pictorial应用正在使用的工作流；
-2. mps 和 cuda 分别是两个平台的专属工作流
-3. workflow.json 是 ComfyUI 原生工作流 json 文件
-4. workflow.eson 是适配客户端的 eson 文件
+2. workflow.json 是 ComfyUI 原生工作流 json 文件
+3. workflow.eson 是适配客户端的 eson 文件
 
 
-### 目录结构
-
-```
-.
-├── common
-│   ├── face_control
-│   ├── get_selection
-│   ├── ......
-├── cuda
-│   ├── box_to_img
-│   ├── brush_doodle_to_img
-│   ├── txt_to_box
-│   ├── refine_img  
-│   ├── ......
-├── mps
-│   ├── box_to_img
-│   ├── brush_doodle_to_img
-│   ├── txt_to_box
-│   ├── refine_img
-│   ├── ......
-
-```
