@@ -13,7 +13,7 @@
             "version": "^1.0.0"
         },
         {
-            "repo_id": "pictorialink/ComfyUI-Qwen-CUDA",
+            "repo_id": "pictorialink/ComfyUI-Qwen",
             "version": "^1.0.0"
         }
     ]
